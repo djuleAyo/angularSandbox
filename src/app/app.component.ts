@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { User } from './user/user.model';
+import { UserService } from './user/user.service';
+import { ProfessorService } from './professor/professor.service';
+import { Professor } from './professor/professor.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'angularSandbox';
+
+  constructor(
+    private userService: UserService,
+    private professorService: ProfessorService
+  ) {}
+
+  users: Array<User> = this.userService._genTestUsers(20);
+  professors: Array<Professor> = this.professorService._genTestProfessors(20);
 }
