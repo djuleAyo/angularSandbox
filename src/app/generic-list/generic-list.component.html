@@ -1,0 +1,7 @@
+<app-generic-list-item
+*ngFor="let element of array; let i = index;"
+[element]="element"
+[ngClass]="{'grid-like': gridLike, 'clickable': selectable, 'selected': element.selected}"
+(click)="onElementSelect(element)"
+>
+</app-generic-list-item>

@@ -1,0 +1,14 @@
+<div class="generic-list-item"
+[ngClass]="{'selected': isSelected}">
+
+<app-professor-details
+  *ngIf="getElementType() === 'Professor'"
+  [professor]="element">
+  </app-professor-details>
+  
+  <app-user-details
+  *ngIf="getElementType() === 'User'"
+  [user]="element">
+  </app-user-details>
+
+</div>

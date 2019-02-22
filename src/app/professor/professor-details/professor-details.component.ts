@@ -13,6 +13,9 @@ export class ProfessorDetailsComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    if (!this.professor) {
+      throw new Error(`No professor was provided for professor-details component`);
+    }
   }
 
 }

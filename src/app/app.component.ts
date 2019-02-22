@@ -16,6 +16,10 @@ export class AppComponent {
     private professorService: ProfessorService
   ) {}
 
+
+
   users: Array<User> = this.userService._genTestUsers(20);
   professors: Array<Professor> = this.professorService._genTestProfessors(20);
+  mixedData: any = [...this.users, ...this.professors];
+
 }

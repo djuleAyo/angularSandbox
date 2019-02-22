@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from '../user.model';
+import { Professor } from '../professor.model';
 
 @Component({
-  selector: 'app-user-list',
-  templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.scss']
+  selector: 'app-professor-list',
+  templateUrl: './professor-list.component.html',
+  styleUrls: ['./professor-list.component.scss']
 })
 /**
  * This is dummy implementation. GridLike property logic is repeated in both
@@ -12,17 +12,16 @@ import { User } from '../user.model';
  * Even when little logic is present and when classes are from the same inheritance
  * chain.
  */
-export class UserListComponent implements OnInit {
+export class ProfessorListComponent implements OnInit {
 
-  @Input() users: Array<User>;
   @Input() gridLike = false;
+  @Input() professors: Array<Professor>;
 
   constructor() { }
 
   ngOnInit() {
-    if (!this.users) {
-      // #debug-verbosity: suspicious
-      console.error(`No users were given to user-list component`);
+    if (!this.professors) {
+      throw new Error(`No professors were provided for professor-list component`);
     }
   }
 
