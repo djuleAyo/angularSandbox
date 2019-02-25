@@ -1,5 +1,6 @@
 <span class="clickable"
-*ngFor="let node of path">
+*ngFor="let node of path"
+(click)="select.emit(node)">
   {{node.path}}
   <div class="triangle-right"></div>
 </span>

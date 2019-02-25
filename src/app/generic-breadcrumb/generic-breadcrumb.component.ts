@@ -8,7 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class GenericBreadcrumbComponent implements OnInit {
 
   @Input() path: Array<object>;
-  @Output() select: EventEmitter<any>;
+  @Output() select = new EventEmitter<any>();
 
   constructor() {}
 

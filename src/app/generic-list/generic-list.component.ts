@@ -39,6 +39,9 @@ export class GenericListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes) {
+    if (this.array) {
+      this.selectedElements = this.array.filter(element => element.selected === true);
+    }
   }
 
   onElementSelect(element: any): void {
