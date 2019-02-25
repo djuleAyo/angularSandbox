@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+
 .clickable:hover {
     cursor: pointer;
     box-shadow: 2px 2px 10px rgba(50, 50, 50, 0.5);
@@ -7,4 +11,13 @@
 
 .selected {
     background: cornflowerblue;
+}
+
+.triangle-right {
+	width: 0;
+	height: 0;
+	border-top: 5px solid transparent;
+	border-left: 10px solid #555;
+	border-bottom: 5px solid transparent;
+	display: inline-block;
 }

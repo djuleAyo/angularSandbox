@@ -40,9 +40,5 @@ export class User {
         this.id = unpackedArgs.id;
         this.name = unpackedArgs.name;
         this.lastName = unpackedArgs.lastName;
-
-        // #debug-verbosity: max
-        console.log(`User ${this.name} ${this.lastName} ${this.id} made.`);
     }
-
 }

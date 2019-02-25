@@ -1,0 +1,429 @@
+{
+  "path": "src",
+  "size": 41163,
+  "fileType": "dir",
+  "children": [
+    {
+      "path": "browserslist",
+      "size": 388,
+      "fileType": "file",
+      "children": []
+    },
+    {
+      "path": "favicon.ico",
+      "size": 5430,
+      "fileType": "file",
+      "children": []
+    },
+    {
+      "path": "index.html",
+      "size": 301,
+      "fileType": "file",
+      "children": []
+    },
+    {
+      "path": "karma.conf.js",
+      "size": 1027,
+      "fileType": "file",
+      "children": []
+    },
+    {
+      "path": "main.ts",
+      "size": 372,
+      "fileType": "file",
+      "children": []
+    },
+    {
+      "path": "polyfills.ts",
+      "size": 2841,
+      "fileType": "file",
+      "children": []
+    },
+    {
+      "path": "styles.scss",
+      "size": 280,
+      "fileType": "file",
+      "children": []
+    },
+    {
+      "path": "test.ts",
+      "size": 642,
+      "fileType": "file",
+      "children": []
+    },
+    {
+      "path": "tsconfig.spec.json",
+      "size": 256,
+      "fileType": "file",
+      "children": []
+    },
+    {
+      "path": "tsconfig.app.json",
+      "size": 166,
+      "fileType": "file",
+      "children": []
+    },
+    {
+      "path": "tslint.json",
+      "size": 314,
+      "fileType": "file",
+      "children": []
+    },
+    {
+      "path": "assets",
+      "size": 9931,
+      "fileType": "dir",
+      "children": [
+        {
+          "path": ".gitkeep",
+          "size": 0,
+          "fileType": "file",
+          "children": []
+        },
+        {
+          "path": "fileTree.json",
+          "size": 9255,
+          "fileType": "file",
+          "children": []
+        },
+        {
+          "path": "testTree.json",
+          "size": 676,
+          "fileType": "file",
+          "children": []
+        }
+      ]
+    },
+    {
+      "path": "environments",
+      "size": 713,
+      "fileType": "dir",
+      "children": [
+        {
+          "path": "environment.ts",
+          "size": 662,
+          "fileType": "file",
+          "children": []
+        },
+        {
+          "path": "environment.prod.ts",
+          "size": 51,
+          "fileType": "file",
+          "children": []
+        }
+      ]
+    },
+    {
+      "path": "app",
+      "size": 18502,
+      "fileType": "dir",
+      "children": [
+        {
+          "path": "app.component.html",
+          "size": 137,
+          "fileType": "file",
+          "children": []
+        },
+        {
+          "path": "app.component.scss",
+          "size": 0,
+          "fileType": "file",
+          "children": []
+        },
+        {
+          "path": "app.component.ts",
+          "size": 1079,
+          "fileType": "file",
+          "children": []
+        },
+        {
+          "path": "app.module.ts",
+          "size": 1719,
+          "fileType": "file",
+          "children": []
+        },
+        {
+          "path": "local-read.service.ts",
+          "size": 355,
+          "fileType": "file",
+          "children": []
+        },
+        {
+          "path": "generic-tree",
+          "size": 1493,
+          "fileType": "dir",
+          "children": [
+            {
+              "path": "generic-tree.component.html",
+              "size": 185,
+              "fileType": "file",
+              "children": []
+            },
+            {
+              "path": "generic-tree.component.scss",
+              "size": 172,
+              "fileType": "file",
+              "children": []
+            },
+            {
+              "path": "generic-tree.component.spec.ts",
+              "size": 664,
+              "fileType": "file",
+              "children": []
+            },
+            {
+              "path": "generic-tree.component.ts",
+              "size": 472,
+              "fileType": "file",
+              "children": []
+            }
+          ]
+        },
+        {
+          "path": "file-tree-record",
+          "size": 2243,
+          "fileType": "dir",
+          "children": [
+            {
+              "path": "file-tree-record.component.html",
+              "size": 35,
+              "fileType": "file",
+              "children": []
+            },
+            {
+              "path": "file-tree-record.component.scss",
+              "size": 0,
+              "fileType": "file",
+              "children": []
+            },
+            {
+              "path": "file-tree-record.component.ts",
+              "size": 308,
+              "fileType": "file",
+              "children": []
+            },
+            {
+              "path": "file-tree-record.model.ts",
+              "size": 1326,
+              "fileType": "file",
+              "children": []
+            },
+            {
+              "path": "file-tree-record-list-item",
+              "size": 574,
+              "fileType": "dir",
+              "children": [
+                {
+                  "path": "file-tree-record-list-item.component.html",
+                  "size": 128,
+                  "fileType": "file",
+                  "children": []
+                },
+                {
+                  "path": "file-tree-record-list-item.component.scss",
+                  "size": 0,
+                  "fileType": "file",
+                  "children": []
+                },
+                {
+                  "path": "file-tree-record-list-item.component.ts",
+                  "size": 446,
+                  "fileType": "file",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "generic-list",
+          "size": 4259,
+          "fileType": "dir",
+          "children": [
+            {
+              "path": "generic-list.component.html",
+              "size": 663,
+              "fileType": "file",
+              "children": []
+            },
+            {
+              "path": "generic-list.component.scss",
+              "size": 50,
+              "fileType": "file",
+              "children": []
+            },
+            {
+              "path": "generic-list.component.ts",
+              "size": 2321,
+              "fileType": "file",
+              "children": []
+            },
+            {
+              "path": "generic-list-item",
+              "size": 1225,
+              "fileType": "dir",
+              "children": [
+                {
+                  "path": "generic-list-item.component.html",
+                  "size": 442,
+                  "fileType": "file",
+                  "children": []
+                },
+                {
+                  "path": "generic-list-item.component.scss",
+                  "size": 149,
+                  "fileType": "file",
+                  "children": []
+                },
+                {
+                  "path": "generic-list-item.component.ts",
+                  "size": 634,
+                  "fileType": "file",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "professor",
+          "size": 3789,
+          "fileType": "dir",
+          "children": [
+            {
+              "path": "professor.model.ts",
+              "size": 1368,
+              "fileType": "file",
+              "children": []
+            },
+            {
+              "path": "professor.service.ts",
+              "size": 704,
+              "fileType": "file",
+              "children": []
+            },
+            {
+              "path": "professor-list",
+              "size": 990,
+              "fileType": "dir",
+              "children": [
+                {
+                  "path": "professor-list.component.html",
+                  "size": 147,
+                  "fileType": "file",
+                  "children": []
+                },
+                {
+                  "path": "professor-list.component.scss",
+                  "size": 49,
+                  "fileType": "file",
+                  "children": []
+                },
+                {
+                  "path": "professor-list.component.ts",
+                  "size": 794,
+                  "fileType": "file",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "path": "professor-details",
+              "size": 727,
+              "fileType": "dir",
+              "children": [
+                {
+                  "path": "professor-details.component.html",
+                  "size": 209,
+                  "fileType": "file",
+                  "children": []
+                },
+                {
+                  "path": "professor-details.component.scss",
+                  "size": 0,
+                  "fileType": "file",
+                  "children": []
+                },
+                {
+                  "path": "professor-details.component.ts",
+                  "size": 518,
+                  "fileType": "file",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "user",
+          "size": 3428,
+          "fileType": "dir",
+          "children": [
+            {
+              "path": "user.model.ts",
+              "size": 1373,
+              "fileType": "file",
+              "children": []
+            },
+            {
+              "path": "user.service.ts",
+              "size": 423,
+              "fileType": "file",
+              "children": []
+            },
+            {
+              "path": "user-details",
+              "size": 693,
+              "fileType": "dir",
+              "children": [
+                {
+                  "path": "user-details.component.html",
+                  "size": 193,
+                  "fileType": "file",
+                  "children": []
+                },
+                {
+                  "path": "user-details.component.scss",
+                  "size": 0,
+                  "fileType": "file",
+                  "children": []
+                },
+                {
+                  "path": "user-details.component.ts",
+                  "size": 500,
+                  "fileType": "file",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "path": "user-list",
+              "size": 939,
+              "fileType": "dir",
+              "children": [
+                {
+                  "path": "user-list.component.html",
+                  "size": 117,
+                  "fileType": "file",
+                  "children": []
+                },
+                {
+                  "path": "user-list.component.scss",
+                  "size": 51,
+                  "fileType": "file",
+                  "children": []
+                },
+                {
+                  "path": "user-list.component.ts",
+                  "size": 771,
+                  "fileType": "file",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

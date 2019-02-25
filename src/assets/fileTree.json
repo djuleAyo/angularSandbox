@@ -1,0 +1,343 @@
+{
+  "path": "./src",
+  "size": 0,
+  "fileType": "dir",
+  "children": [
+    {
+      "path": "./src/browserslist",
+      "size": 388,
+      "fileType": "file",
+      "children": []
+    },
+    {
+      "path": "./src/favicon.ico",
+      "size": 5430,
+      "fileType": "file",
+      "children": []
+    },
+    {
+      "path": "./src/index.html",
+      "size": 301,
+      "fileType": "file",
+      "children": []
+    },
+    {
+      "path": "./src/karma.conf.js",
+      "size": 1027,
+      "fileType": "file",
+      "children": []
+    },
+    {
+      "path": "./src/main.ts",
+      "size": 372,
+      "fileType": "file",
+      "children": []
+    },
+    {
+      "path": "./src/polyfills.ts",
+      "size": 2841,
+      "fileType": "file",
+      "children": []
+    },
+    {
+      "path": "./src/styles.scss",
+      "size": 280,
+      "fileType": "file",
+      "children": []
+    },
+    {
+      "path": "./src/test.ts",
+      "size": 642,
+      "fileType": "file",
+      "children": []
+    },
+    {
+      "path": "./src/tsconfig.app.json",
+      "size": 166,
+      "fileType": "file",
+      "children": []
+    },
+    {
+      "path": "./src/tsconfig.spec.json",
+      "size": 256,
+      "fileType": "file",
+      "children": []
+    },
+    {
+      "path": "./src/tslint.json",
+      "size": 314,
+      "fileType": "file",
+      "children": []
+    },
+    {
+      "path": "./src/environments",
+      "size": 0,
+      "fileType": "dir",
+      "children": [
+        {
+          "path": "./src/environments/environment.prod.ts",
+          "size": 51,
+          "fileType": "file",
+          "children": []
+        },
+        {
+          "path": "./src/environments/environment.ts",
+          "size": 662,
+          "fileType": "file",
+          "children": []
+        }
+      ]
+    },
+    {
+      "path": "./src/assets",
+      "size": 0,
+      "fileType": "dir",
+      "children": [
+        {
+          "path": "./src/assets/fileTree.json",
+          "size": 5431,
+          "fileType": "file",
+          "children": []
+        },
+        {
+          "path": "./src/assets/.gitkeep",
+          "size": 0,
+          "fileType": "file",
+          "children": []
+        }
+      ]
+    },
+    {
+      "path": "./src/scripts",
+      "size": 0,
+      "fileType": "dir",
+      "children": [
+        {
+          "path": "./src/scripts/ftw.ts",
+          "size": 3628,
+          "fileType": "file",
+          "children": []
+        }
+      ]
+    },
+    {
+      "path": "./src/app",
+      "size": 0,
+      "fileType": "dir",
+      "children": [
+        {
+          "path": "./src/app/app.component.html",
+          "size": 78,
+          "fileType": "file",
+          "children": []
+        },
+        {
+          "path": "./src/app/app.component.scss",
+          "size": 0,
+          "fileType": "file",
+          "children": []
+        },
+        {
+          "path": "./src/app/app.component.ts",
+          "size": 710,
+          "fileType": "file",
+          "children": []
+        },
+        {
+          "path": "./src/app/app.module.ts",
+          "size": 1235,
+          "fileType": "file",
+          "children": []
+        },
+        {
+          "path": "./src/app/professor",
+          "size": 0,
+          "fileType": "dir",
+          "children": [
+            {
+              "path": "./src/app/professor/professor.model.ts",
+              "size": 1368,
+              "fileType": "file",
+              "children": []
+            },
+            {
+              "path": "./src/app/professor/professor.service.ts",
+              "size": 704,
+              "fileType": "file",
+              "children": []
+            },
+            {
+              "path": "./src/app/professor/professor-details",
+              "size": 0,
+              "fileType": "dir",
+              "children": [
+                {
+                  "path": "./src/app/professor/professor-details/professor-details.component.html",
+                  "size": 209,
+                  "fileType": "file",
+                  "children": []
+                },
+                {
+                  "path": "./src/app/professor/professor-details/professor-details.component.scss",
+                  "size": 0,
+                  "fileType": "file",
+                  "children": []
+                },
+                {
+                  "path": "./src/app/professor/professor-details/professor-details.component.ts",
+                  "size": 518,
+                  "fileType": "file",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "path": "./src/app/professor/professor-list",
+              "size": 0,
+              "fileType": "dir",
+              "children": [
+                {
+                  "path": "./src/app/professor/professor-list/professor-list.component.html",
+                  "size": 147,
+                  "fileType": "file",
+                  "children": []
+                },
+                {
+                  "path": "./src/app/professor/professor-list/professor-list.component.scss",
+                  "size": 49,
+                  "fileType": "file",
+                  "children": []
+                },
+                {
+                  "path": "./src/app/professor/professor-list/professor-list.component.ts",
+                  "size": 794,
+                  "fileType": "file",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "./src/app/generic-list",
+          "size": 0,
+          "fileType": "dir",
+          "children": [
+            {
+              "path": "./src/app/generic-list/generic-list.component.html",
+              "size": 663,
+              "fileType": "file",
+              "children": []
+            },
+            {
+              "path": "./src/app/generic-list/generic-list.component.scss",
+              "size": 50,
+              "fileType": "file",
+              "children": []
+            },
+            {
+              "path": "./src/app/generic-list/generic-list.component.ts",
+              "size": 2313,
+              "fileType": "file",
+              "children": []
+            },
+            {
+              "path": "./src/app/generic-list/generic-list-item",
+              "size": 0,
+              "fileType": "dir",
+              "children": [
+                {
+                  "path": "./src/app/generic-list/generic-list-item/generic-list-item.component.html",
+                  "size": 298,
+                  "fileType": "file",
+                  "children": []
+                },
+                {
+                  "path": "./src/app/generic-list/generic-list-item/generic-list-item.component.scss",
+                  "size": 149,
+                  "fileType": "file",
+                  "children": []
+                },
+                {
+                  "path": "./src/app/generic-list/generic-list-item/generic-list-item.component.ts",
+                  "size": 634,
+                  "fileType": "file",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "./src/app/user",
+          "size": 0,
+          "fileType": "dir",
+          "children": [
+            {
+              "path": "./src/app/user/user.model.ts",
+              "size": 1373,
+              "fileType": "file",
+              "children": []
+            },
+            {
+              "path": "./src/app/user/user.service.ts",
+              "size": 423,
+              "fileType": "file",
+              "children": []
+            },
+            {
+              "path": "./src/app/user/user-details",
+              "size": 0,
+              "fileType": "dir",
+              "children": [
+                {
+                  "path": "./src/app/user/user-details/user-details.component.html",
+                  "size": 193,
+                  "fileType": "file",
+                  "children": []
+                },
+                {
+                  "path": "./src/app/user/user-details/user-details.component.scss",
+                  "size": 0,
+                  "fileType": "file",
+                  "children": []
+                },
+                {
+                  "path": "./src/app/user/user-details/user-details.component.ts",
+                  "size": 500,
+                  "fileType": "file",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "path": "./src/app/user/user-list",
+              "size": 0,
+              "fileType": "dir",
+              "children": [
+                {
+                  "path": "./src/app/user/user-list/user-list.component.html",
+                  "size": 117,
+                  "fileType": "file",
+                  "children": []
+                },
+                {
+                  "path": "./src/app/user/user-list/user-list.component.scss",
+                  "size": 51,
+                  "fileType": "file",
+                  "children": []
+                },
+                {
+                  "path": "./src/app/user/user-list/user-list.component.ts",
+                  "size": 771,
+                  "fileType": "file",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

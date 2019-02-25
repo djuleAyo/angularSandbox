@@ -1,0 +1,19 @@
+<app-generic-breadcrumb
+[path]="selectedPath"></app-generic-breadcrumb>
+
+
+<app-generic-list class="generic-tree-left-list"
+[array]="selectedElementParent?.children"
+[multiselect]="false"
+[draggable]="false"
+(elementSelect)="selectElementLeftList($event)">
+</app-generic-list>
+
+<app-generic-list class="generic-tree-right-list"
+[array]="selectedElement?.children"
+(elementSelect)="selectElementRightList($event)">
+</app-generic-list>
+
+<p *ngIf="!selectedElement">
+    Select an Item.
+</p>

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Professor } from '../professor.model';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-professor-list',
@@ -23,6 +24,10 @@ export class ProfessorListComponent implements OnInit {
     if (!this.professors) {
       throw new Error(`No professors were provided for professor-list component`);
     }
+  }
+
+  drop(event: CdkDragDrop<Array<any>>) {
+    moveItemInArray(this.professors, event.previousIndex, event.currentIndex);
   }
 
 }

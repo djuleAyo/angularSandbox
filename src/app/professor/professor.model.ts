@@ -39,7 +39,5 @@ export class Professor extends User {
         }
         super(unpackedArgs.id, unpackedArgs.name, unpackedArgs.lastName);
         this.course = unpackedArgs.course;
-        // #debug-verbosity: suspicious
-        console.log(`Professor ${this.name} ${this.lastName} ${this.id} created`);
     }
 }

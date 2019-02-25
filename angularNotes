@@ -1,0 +1,209 @@
+WHAT IS ANGULAR
+Framework for spas - checkout pros and cons of spa apps and what is a framework.
+
+VERSIONS
+Angular1 - angular js and is diffrent from others
+Angular 2+ are all updates of the same framework and refered to as just angular.
+
+CLI
+Comes with built in cli for project management
+Commands:
+ng new project_name
+ng g c|s|m|f
+ng s
+
+COMPILATION
+angular html is not valid html and must be compiled
+angular source has many files
+after compilation everything gets bundled - html, s?css, ts
+
+POINT
+Link static html with dynamic data of js process
+
+TYPESCRIPT
+ts-node to exe ts directly
+do use types
+
+FILES
+angular.json - conf cli project (has global styles as well)
+index.html is the file that is served - This file is bundled with needed scripts
+main.ts - first code that gets executed. bootstraps a module
+--------------------------------------------------------------------------------
+COMPONENTS
+
+HOW TO CREATE:
+ng g c 
+or manualy
+import @Component from @angular/core
+Must have template - inline or external
+selector is opitional but if exists must be unique. Can be tag, class or attr 
+styleUrls
+and add to module declarations
+
+--------------------------------------------------------------------------------
+MODULES
+
+decorator:
+NgModule form @angual/core
+imports - enlist other modules to import
+bootstrap - component that gets bootstraped
+declarations - declare all the things you need or they will be skipped in 
+compilation
+providers - provide services
+
+bootstrap - which components is bootstraped - compiled by default
+Default compilation compiles only needed things
+
+--------------------------------------------------------------------------------
+DATA BINDING
+String interpolation {{}} - used in template
+
+Property binding [] - used in template + can bind to html default properties or
+    to custom properties of your own
+
+event binding () - used in template - event names do NOT have on prefix
+    $event - special var that holds the value of the event - can be passed to 
+    method handling the event
+
+two way data binding [(ngModel)] - in template
+    must import FormsModule to the module that uses 2 way data binding from 
+    @angular/forms
+
+NOTES: angular expression - access dynamic data from html - does NOT  need {{}}
+for fool list of bindable prop and events see docs or console.log the element you
+are torturing
+
+-------------------------
+
+To make custom events use @Output decorator from core on a property and bind 
+to it in dom
+Make those properties of type EventEmmiter from @angular/core (it is a generic)
+
+To make custom property to bind to use @Inuput from @angular/core decorator 
+and bind to it
+NOTE: By default all properties of a component are accessable only from the component
+NOTE: input and output support aliases. If neede see docs.
+
+
+--------------------------------------------------------------------------------
+DIRECTIVES 
+instructions in the dom
+- 2 types: built in and custom
+
+BUILT IN:
+ngIf, ngFor, ngSwitch - use with star... see explaination
+- these do NOT hide but remove from the dom
+- these are structural directives and used with * prefix.
+*ngFor="let x of array; let i = index" index is special val and is index of of loop
+
+how to else in ngIf?
+- one way: negate the expression
+- or:
+place local refrence to a ng-template directive and add 'else' dom to it
+then in ngIf add else as follows: *ngIf="myFlag; else local_ref"
+
+* prefix:
+is syntatical sugar. It is desugared by angular to ng-template
+
+ATTRIBUTE DIRECTIVES
+NOTE: binding to property of directive is not same as directive it self
+ngStyle - bind to it as [ngStyle]="{backgroundColor: getColor()}"
+ngClass - bind to it as [ngClass]="{myClass: expression}"
+
+--------------------------------------------------------------------------------
+DEBBUGING
+Webpack serves src files(ts) in chrome and can debug directly the source
+Checkout augury - chrome extension for angular
+
+--------------------------------------------------------------------------------
+VIEW ENCAPSULATION
+
+css is applied only to a component - not to the whole app
+This is achieved by using attributes - ng compiles both css and htlm you provide
+There are other methods - like shadow dom but this is not universaly supported
+You can change encapsulation on each component in its decorator 
+(and disable it as well)
+None | Emulated | Native
+Native is for shadow dom
+--------------------------------------------------------------------------------
+LOCAL REFRENCES & @ViewChild
+
+i.e. When you 2 way bind input but you have save button and are interested for 
+the value only when the button is clicked 2 way bind is overkill and you need
+a way to access value of the element. Good place for a local ref
+
+LR can be placed on any html element and is a refrence to whole html element 
+not just the value. You can use LR ONLY in template, not in typescript!
+
+@ViewChild from @angular/core
+decorator take string - selector as an arg - not css selector but i.e. local ref
+or a component
+Resulting property is of type ElementRef from @angular/core
+ElementRef has nativeElement wich is the element object it self
+WARRNING: avoid accesing and changing the dom through elements accessed through
+ViewChild
+
+--------------------------------------------------------------------------------
+ng-content
+
+by default any dom placed between components opening and closing tag is ignored
+To enter dom into a component use nt-content directive in components template
+and then dom entered between components tags will be entered instead of that
+ng-content
+--------------------------------------------------------------------------------
+Lifecicle hooks
+OnInit interface from @angular/core
+
+constructor
+ngOnChanges - when @Input get changes
+ngOnInit - after constructor
+ngDoCheck - run alot to check if there are any changes that trigger rerender
+    do not run beefy code here
+ngAfterContentInit - after initing dom given in ng-content
+ngAfterContentChecked - similar as doCheck but for dom given in ng-content
+ngAfterViewInit - after component init
+ngAfterViewChecked
+ngOnDestroy
+
+WARRNING: ngOnChanges will not trigger if object ref is not changed even if the
+object properties changed
+
+@ContentChild from 
+placing local ref on dom in ng-content is not @ViewChild. Its you guessed it:
+@ContentChild and is used in same purpose
+--------------------------------------------------------------------------------
+PIPES
+
+
+Unix - filter is a program that takes input, transforms it and outputs transformed
+data. Those are usualy used as pipes in bash scripts. Usecase is similar in ng
+Preserve original data, but display transformed data. Pipes are used in html
+i.e. {{name | uppercase}}
+parametrized pipes take args after ':'
+i.e. {{date | date:'fullDate'}}
+to see all args and all pipes see official docs 
+
+pipes, as in unix can be chained
+
+BUILTIN
+uppercase, date
+
+CUSTOM
+pipe must have a certain method to be a pipe. Not a must but is recomended to 
+implement PipeTransform interface from @angular/core
+i.e.
+transform(value: any) {
+    return value.substr(0, 5);
+}
+Also needs a pipe decorator
+name: pipeName
+To parametrize custom pipe add more args to transform method. Voila!
+
+PURE VS IMPURE FILTERS
+By default filter is not rerun every time data changes
+This is the reason why no built in filter pipes exist
+To force updates add 2nd pror to decorator
+pure: true|false
+
+ASYNC PIPES
+Works with promises and observables. For observable it subscribes automaticaly

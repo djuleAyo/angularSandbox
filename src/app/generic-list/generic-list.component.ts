@@ -1,11 +1,15 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-generic-list',
   templateUrl: './generic-list.component.html',
   styleUrls: ['./generic-list.component.scss']
 })
-export class GenericListComponent implements OnInit {
+export class GenericListComponent implements OnInit, OnChanges {
+
+  private selectedElements: Array<any> = [];
+
 
   @Input() array: Array<any>;
 
@@ -13,38 +17,66 @@ export class GenericListComponent implements OnInit {
 
   @Output() elementSelect: EventEmitter<any> = new EventEmitter<any>();
 
-  // ~Events -------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
 
   // Controls ------------------------------------------------------------------
   @Input() selectable = true;
-  @Input() multiselect = false;
-  // ~Controls -----------------------------------------------------------------
+  @Input() multiselect = true;
+
+  @Input() editable = true;
+  @Input() draggable = true;
+  @Input() delete = true;
+  @Input() deleteAll = true;
+  // ---------------------------------------------------------------------------
 
   // Appearance ----------------------------------------------------------------
   @Input() gridLike = false;
-  // ~Appearance ---------------------------------------------------------------
+  // ---------------------------------------------------------------------------
 
   constructor() { }
 
   ngOnInit() {
-    if (!this.array) {
-      throw new Error(`No array is provided for generic list component`);
-    }
   }
 
-  onElementSelect(selectedElement: any): void {
-    const localElement = this.array.find(element => element.id === selectedElement.id);
-    localElement.selected = true;
+  ngOnChanges(changes) {
+  }
 
-    if (!this.multiselect) {
-      this.array.map(element => {
-        if (element.id !== selectedElement.id) {
-          element.selected = false;
-        }
-      });
+  onElementSelect(element: any): void {
+
+    if (!this.selectable) {
+      return;
     }
 
-    this.elementSelect.emit(localElement);
+    const isSelected = this.isSelected(element);
+
+    // toggle logic
+    if (!isSelected) {
+      element.selected = true;
+      if (this.multiselect) {
+        this.selectedElements.push(element);
+      } else {
+        this.selectedElements = [element];
+      }
+    } else {
+      element.selected = false;
+      this.selectedElements = this.selectedElements.filter(
+        selectedElement => selectedElement !== element
+      );
+    }
+
+    this.elementSelect.emit(
+      this.multiselect ? this.selectedElements : this.selectedElements[0]
+    );
+  }
+
+  isSelected(element: any): boolean {
+    return this.selectedElements.find(
+      selectedElement => selectedElement === element
+    ) !== undefined;
+  }
+
+  drop(event: CdkDragDrop<Array<any>>) {
+    moveItemInArray(this.array, event.previousIndex, event.currentIndex);
   }
 
 }

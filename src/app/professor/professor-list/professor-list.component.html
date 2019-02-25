@@ -1,7 +1,14 @@
-<app-professor-details
-*ngFor="let professor of professors"
-[professor]="professor"
+<div
+cdkDropList (cdkDropListDropped)="drop($event)">
+    <p cdkDrag
+    style="
+        border: solid;
+        height: 150px;
+        text-align: center;
+    "
+    *ngFor="let professor of professors"
+    >
+    {{professor.name}}
+    </p>
 
-[ngClass]="{'grid-like': gridLike}">
-
-</app-professor-details>
+</div>
