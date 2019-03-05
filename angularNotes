@@ -9,7 +9,7 @@ CLI
 Comes with built in cli for project management
 Commands:
 ng new project_name
-ng g c|s|m|f
+ng g c|s|m|f|d
 ng s
 
 COMPILATION
@@ -89,10 +89,10 @@ NOTE: input and output support aliases. If neede see docs.
 DIRECTIVES 
 instructions in the dom
 - 2 types: built in and custom
+- 2 types: attribute and structural
 
 BUILT IN:
-ngIf, ngFor, ngSwitch - use with star... see explaination
-- these do NOT hide but remove from the dom
+ngIf, ngFor, ngSwitch - use with star... see explaination- these do NOT hide but remove from the dom
 - these are structural directives and used with * prefix.
 *ngFor="let x of array; let i = index" index is special val and is index of of loop
 
@@ -109,6 +109,54 @@ ATTRIBUTE DIRECTIVES
 NOTE: binding to property of directive is not same as directive it self
 ngStyle - bind to it as [ngStyle]="{backgroundColor: getColor()}"
 ngClass - bind to it as [ngClass]="{myClass: expression}"
+
+STRUCTURAL DIRECTIVES
+Only one may be present
+
+-------------------- Return here after later lectures
+
+CUSTOM DIRECTIVE
+does NOT change the dom (adds remove the elem) but changes the element it self
+@Directive({
+    selector:
+
+})
+Can inject the elem that has directive into the directive:
+constructor(
+    private elem: ElementRef
+) {}
+This is NOT the smartest way of accessing the element. No good to access the dom
+directly
+
+Use Renderer2 instead
+Inject both elRef and Renderer2 and use renderer methods to access the dom
+i.e. setStyle(elRef, 'background-color', 'blue') and opitonal 4th arg for important
+Looks pretty the same as before... Why is it better?
+Angular may run not only in a browser. There may be no dom at all. 
+RULE: Any dom manipulation through Renderer2
+
+@HostListener - listen to events  on directive
+i.e. @HostListener('mouseenter') mouseover(enterData: Event) {}
+
+@HostBinding - bind to props of directive
+i.e. @HostBinding('style.backgroundColor') backgroundColor;
+
+Also you can use @Input and @Output on directives
+To bind to directive props just bind inside tag as follows
+i.e. <p myDirective [myDirectiveProperty]="lalala"...
+ng will figure out it is a prop of the directive
+ngClass is bind like this: [ngClass]
+How do you bind to prop of directive with same name as directive?
+ez! Just name the prop so or use alias
+Can bind to a prop w/o [] but right expr is taken as string and you may get confused
+if it is custom prop or not
+
+CUSTOM STRUCTURAL
+<div *ngId="expr"        same as
+<ng-template [ngIf]="expr">
+    <div... 
+Fuck this too much info for nothing. When you need custom structural directive 
+dig the docs. Not too much but 2 more angular types: TemplateRef, ViewChild
 
 --------------------------------------------------------------------------------
 DEBBUGING
@@ -154,6 +202,8 @@ ng-content
 Lifecicle hooks
 OnInit interface from @angular/core
 
+executed in this order:
+
 constructor
 ngOnChanges - when @Input get changes
 ngOnInit - after constructor
@@ -173,7 +223,6 @@ placing local ref on dom in ng-content is not @ViewChild. Its you guessed it:
 @ContentChild and is used in same purpose
 --------------------------------------------------------------------------------
 PIPES
-
 
 Unix - filter is a program that takes input, transforms it and outputs transformed
 data. Those are usualy used as pipes in bash scripts. Usecase is similar in ng
@@ -207,3 +256,31 @@ pure: true|false
 
 ASYNC PIPES
 Works with promises and observables. For observable it subscribes automaticaly
+
+--------------------------------------------------------------------------------
+SERVICES
+regular class - should contain common logic
+hierarchy incejction
+--------------------------------------------------------------------------------
+
+ROUTING
+
+OBSERVABLES & HTTP & HTTP CLIENT
+
+FORMS
+
+AUTH
+
+MODULES
+
+NGRX
+
+DEPLOY
+
+UNIVERSAL
+
+ANIMATIONS
+
+SERVICE WORKERS
+
+TESTING

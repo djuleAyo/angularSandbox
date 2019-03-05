@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 
 import { AppComponent } from './app.component';
@@ -17,6 +18,18 @@ import { FileTreeRecordComponent } from './file-tree-record/file-tree-record.com
 import { FileTreeRecordListItemComponent } from './file-tree-record/file-tree-record-list-item/file-tree-record-list-item.component';
 import { FileSizePipe } from './file-size.pipe';
 import { GenericBreadcrumbComponent } from './generic-breadcrumb/generic-breadcrumb.component';
+import { MeanCourseComponent } from './mean-course/mean-course.component';
+import { PostCreateComponent } from './mean-course/post/post-create/post-create.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  MatInputModule,
+  MatCardModule,
+  MatButtonModule,
+  MatToolbarModule,
+  MatExpansionModule
+  } from '@angular/material';
+import { HeaderComponent } from './mean-course/header/header.component';
+import { PostListComponent } from './mean-course/post/post-list/post-list.component';
 
 @NgModule({
   declarations: [
@@ -31,11 +44,23 @@ import { GenericBreadcrumbComponent } from './generic-breadcrumb/generic-breadcr
     FileTreeRecordComponent,
     FileTreeRecordListItemComponent,
     FileSizePipe,
-    GenericBreadcrumbComponent
+    GenericBreadcrumbComponent,
+    MeanCourseComponent,
+    PostCreateComponent,
+    HeaderComponent,
+    PostListComponent
   ],
   imports: [
     BrowserModule,
     DragDropModule,
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatCardModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatExpansionModule,
     HttpClientModule
   ],
   providers: [UserService, ProfessorService],
