@@ -265,7 +265,103 @@ hierarchy incejction
 
 ROUTING
 
+Possible to change url without the page change - (browser api?)
+
+Router - object that configures routing. The framework takes the config and voila!
+appRoutes: Routes /*- router dcl */ = [
+    {path: 'url', component: AComponent}
+]
+
+imports: [ // set conf obj as active for routing
+    RouterModule.forRoot(appRoutes)
+]
+
+<router-outlet> the directive which will hold the component of the current route
+
+routerLink="/url" - directive used to link stuff w/o reload or
+routerLink=["/", "url"]
+NOTE: If routerLink value is w/o / prefix it is relative
+If the component links
+
+routerLinkActive="className" - use on same element that has routerLink directive
+decides to put the class if the route CONTAINS the path, NOT equals
+To force equality must configure so i.e.
+
+<an_element
+routerLink='something something' 
+routerLinkActive='something' 
+[routerLinkOpitons]="{exact: true}"
+>
+
+
+NAVIGATE PROGRAMATICALY
+inject private router: Router and use navigate method
+Navigate method does NOT know the current route, but may be informed
+i.e. inject route: ActivatedRoute and pass it to relativeTo conf field
+
+this.router.navigate(['/url'], conf?: {relativeTo: this.route}) 
+//relativeTo defaults to root so no / prefix and no relativeTo conf is relative
+//but to root = absolute 
+
+
+PASSING PARAMS
+
+{path: 'user/:id', component: lalala}
+get the value of the param:
+1) inject route: ActivatedRoute
+2) this.route.snapshot.params['propName']
+
+Note: snapshot does NOT change if the route changes. You could link from a component
+with a route that displays the same component i.e.
+form user/3 to user/5. Snapshot won't change and params on it won't either
+To watch live changes get observable with 
+this.route.params
+
+PASSING QUERY PARAMS & FRAMGMENTS
+i.e. localhost:4200/users/10?mode=editing&anotherone=value#afragment
+bind to property of routerLink directive: [queryParams]="{}"
+bind to property of routerLink directive: [fragment]="'loading'" or fragment='loading'
+Only one fragment allowed
+
+How to add these programaticaly?
+this.router.navigate([...], {queryParams: {}, fragment: 'loading'})
+When navigating params get lost. To perserve params use queryParamsHandling prop
+of the conf object with values 'merge' | 'perserve'
+
+How to read?
+Through snapshot: queryParams prop & fragment prop
+Through route: this.route.queryParams.subscribe() | this.route.fragment.subscribe()
+
+GENERAL NOTE: url is string. So are the numbers in it. Do cast (prefix + operator)
+
+NESTED/CHILD ROUTES
+{ path: 'users', component Lalala, children: [
+    {...another rote conf}, 
+    {...another rote conf}
+]}
+do add another router-outlet
+
+REDIRECTING:
+alternative prop in conf obje of the route to component prop is redirectTo
+and the value of it is path
+Paths may be wildcards.
+Routes cascade - put wildcards on the end
+
+OUTSOURCING THE ROUTE CONF:
+make another module. See how in modules and export RouterModule from your routing
+module
+
+GUARDS
+
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
 OBSERVABLES & HTTP & HTTP CLIENT
+
+Angular subscriptions get unsubed but to get a good practice always unsub all
+subscribes in ngOnDestroy
 
 FORMS
 
