@@ -1,4 +1,4 @@
-WHAT IS ANGULAR
+⭐️WHAT IS ANGULAR
 Framework for spas - checkout pros and cons of spa apps and what is a framework.
 
 VERSIONS
@@ -29,7 +29,7 @@ angular.json - conf cli project (has global styles as well)
 index.html is the file that is served - This file is bundled with needed scripts
 main.ts - first code that gets executed. bootstraps a module
 --------------------------------------------------------------------------------
-COMPONENTS
+⭐️COMPONENTS
 
 HOW TO CREATE:
 ng g c 
@@ -41,7 +41,7 @@ styleUrls
 and add to module declarations
 
 --------------------------------------------------------------------------------
-MODULES
+⭐️MODULES
 
 decorator:
 NgModule form @angual/core
@@ -55,7 +55,7 @@ bootstrap - which components is bootstraped - compiled by default
 Default compilation compiles only needed things
 
 --------------------------------------------------------------------------------
-DATA BINDING
+⭐️DATA BINDING
 String interpolation {{}} - used in template
 
 Property binding [] - used in template + can bind to html default properties or
@@ -86,7 +86,7 @@ NOTE: input and output support aliases. If neede see docs.
 
 
 --------------------------------------------------------------------------------
-DIRECTIVES 
+⭐️DIRECTIVES 
 instructions in the dom
 - 2 types: built in and custom
 - 2 types: attribute and structural
@@ -159,12 +159,12 @@ Fuck this too much info for nothing. When you need custom structural directive
 dig the docs. Not too much but 2 more angular types: TemplateRef, ViewChild
 
 --------------------------------------------------------------------------------
-DEBBUGING
+⭐️DEBBUGING
 Webpack serves src files(ts) in chrome and can debug directly the source
 Checkout augury - chrome extension for angular
 
 --------------------------------------------------------------------------------
-VIEW ENCAPSULATION
+⭐️VIEW ENCAPSULATION
 
 css is applied only to a component - not to the whole app
 This is achieved by using attributes - ng compiles both css and htlm you provide
@@ -174,7 +174,7 @@ You can change encapsulation on each component in its decorator
 None | Emulated | Native
 Native is for shadow dom
 --------------------------------------------------------------------------------
-LOCAL REFRENCES & @ViewChild
+⭐️LOCAL REFRENCES & @ViewChild 
 
 i.e. When you 2 way bind input but you have save button and are interested for 
 the value only when the button is clicked 2 way bind is overkill and you need
@@ -192,14 +192,14 @@ WARRNING: avoid accesing and changing the dom through elements accessed through
 ViewChild
 
 --------------------------------------------------------------------------------
-ng-content
+⭐️ng-content
 
 by default any dom placed between components opening and closing tag is ignored
 To enter dom into a component use nt-content directive in components template
 and then dom entered between components tags will be entered instead of that
 ng-content
 --------------------------------------------------------------------------------
-Lifecicle hooks
+⭐️Lifecicle hooks
 OnInit interface from @angular/core
 
 executed in this order:
@@ -222,7 +222,7 @@ object properties changed
 placing local ref on dom in ng-content is not @ViewChild. Its you guessed it:
 @ContentChild and is used in same purpose
 --------------------------------------------------------------------------------
-PIPES
+⭐️PIPES
 
 Unix - filter is a program that takes input, transforms it and outputs transformed
 data. Those are usualy used as pipes in bash scripts. Usecase is similar in ng
@@ -258,12 +258,12 @@ ASYNC PIPES
 Works with promises and observables. For observable it subscribes automaticaly
 
 --------------------------------------------------------------------------------
-SERVICES
+⭐️SERVICES
 regular class - should contain common logic
 hierarchy incejction
 --------------------------------------------------------------------------------
 
-ROUTING
+⭐️ROUTING
 
 Possible to change url without the page change - (browser api?)
 
@@ -300,8 +300,8 @@ Navigate method does NOT know the current route, but may be informed
 i.e. inject route: ActivatedRoute and pass it to relativeTo conf field
 
 this.router.navigate(['/url'], conf?: {relativeTo: this.route}) 
-//relativeTo defaults to root so no / prefix and no relativeTo conf is relative
-//but to root = absolute 
+⚠️ relativeTo defaults to root so no / prefix and no relativeTo conf is relative
+but to root = absolute 
 
 
 PASSING PARAMS
@@ -332,7 +332,7 @@ How to read?
 Through snapshot: queryParams prop & fragment prop
 Through route: this.route.queryParams.subscribe() | this.route.fragment.subscribe()
 
-GENERAL NOTE: url is string. So are the numbers in it. Do cast (prefix + operator)
+⚠️ url is string. So are the numbers in it. Do cast (prefix + operator)
 
 NESTED/CHILD ROUTES
 { path: 'users', component Lalala, children: [
@@ -352,9 +352,22 @@ make another module. See how in modules and export RouterModule from your routin
 module
 
 GUARDS
+❓ is navigate method subjected to guards
+Protect a route with method
+Since it will be called multiple times good idea is to implement it in a service
+which implements CanActivate interface wich defines canActivate method
+canActivate(route: ActivatedRoute, state: RouterSnapshot):
+promise<boolean> | observable<boolean> | boolean
+To use defined guard and canActivate prop to route in Router conf obj
+It is of type Array<GuardClass> where GuardClass implements CanActivate
+Feel free to redirect(navigate) elsewhere in the guard service
 
+To avoid adding canActivate to every child of a route use canActivateChild
+and implement CanActivateChild interface in the guard service
 
---------------------------------------------------------------------------------
+canDeactivate
+
+-------------------------------------------------------------------------------- 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
@@ -363,13 +376,57 @@ OBSERVABLES & HTTP & HTTP CLIENT
 Angular subscriptions get unsubed but to get a good practice always unsub all
 subscribes in ngOnDestroy
 
-FORMS
+FORMS   ❗️
+💥Template driven approach
+no action on form to let angular handle the form
+include FormsModule
+add ngModel to an input you want to be a part of resulting object. w/o 2 way 
+binding i.e [()] and provite name attribute to the input
+to get data bind to ngSubmit on form element ⚠️ NOT on submit button
+add local ref to the form element and pass that ref to ngSubmit handler
+which gives the underlinig element
+to access form data use #elementRefName="ngForm"
+now passing elementRefName will give actual data in value property of the object
 
-AUTH
+form states: dirty touched pristine disabled etc
 
-MODULES
+another way to access data of the form is through ViewChild
 
-NGRX
+VALIDATION
+html native required, email
+ng dynamically adds/removes classes
+check list of built in validators in the docs
+i.e. bind to disabled of submit button with valid field of the form elemRef
+
+ACCESSING INDIVIDUAL FIELDS
+place a local red on an input i.e. #ref="ngModel"
+
+DEFAUL VALUES
+bind to ngModel set on an input
+2 way binding is still possible just like before
+
+FORM GROUP
+Place ngModelGroup on a container of group elements which must have a value
+i.e. ngModelGroup="userData" and userData will be key name in resulting object
+also can place ref on it and give value to the ref "ngModelGroup"
+
+SETTING AND PATHCHING VALUES
+access form element throug ViewChild and use setValue method which must take
+whole object witch represents the form
+or access form element through ViewChild and access form property of that object
+it has pathValue method
+
+RESETING
+form elementref has reset method
+
+💥Reactive approach
+
+
+AUTH    ❗️
+
+MODULES ❗️
+
+NGRX    ❗️
 
 DEPLOY
 
@@ -379,4 +436,4 @@ ANIMATIONS
 
 SERVICE WORKERS
 
-TESTING
+TESTING ❗️
