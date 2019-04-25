@@ -299,7 +299,7 @@ inject private router: Router and use navigate method
 Navigate method does NOT know the current route, but may be informed
 i.e. inject route: ActivatedRoute and pass it to relativeTo conf field
 
-this.router.navigate(['/url'], conf?: {relativeTo: this.route}) 
+this.router.navigate(['/url'], conf?: {relativeTo: <ActivatedRoute>this.route}) 
 ⚠️ relativeTo defaults to root so no / prefix and no relativeTo conf is relative
 but to root = absolute 
 
@@ -357,8 +357,7 @@ Protect a route with method
 Since it will be called multiple times good idea is to implement it in a service
 which implements CanActivate interface wich defines canActivate method
 canActivate(route: ActivatedRoute, state: RouterSnapshot):
-promise<boolean> | observable<boolean> | boolean
-To use defined guard and canActivate prop to route in Router conf obj
+promise<boolean> | observable<boolean> | booleanTo use defined guard and canActivate prop to route in Router conf obj
 It is of type Array<GuardClass> where GuardClass implements CanActivate
 Feel free to redirect(navigate) elsewhere in the guard service
 
@@ -376,6 +375,7 @@ OBSERVABLES & HTTP & HTTP CLIENT
 Angular subscriptions get unsubed but to get a good practice always unsub all
 subscribes in ngOnDestroy
 
+--------------------------------------------------------------------------------
 FORMS   ❗️
 💥Template driven approach
 no action on form to let angular handle the form
@@ -399,7 +399,7 @@ check list of built in validators in the docs
 i.e. bind to disabled of submit button with valid field of the form elemRef
 
 ACCESSING INDIVIDUAL FIELDS
-place a local red on an input i.e. #ref="ngModel"
+place a local ref on an input i.e. #ref="ngModel"
 
 DEFAUL VALUES
 bind to ngModel set on an input
@@ -420,7 +420,49 @@ RESETING
 form elementref has reset method
 
 💥Reactive approach
+------------------------------
+make a property of component to store the form of type FormGroup
+Don't need forms module - this is for template. Need RactiveFormsModule
+Should init before rendering the template so use such lifecicle hook
+In form control group you add controls - key value pairs (of type FormControl)
+FormControl - 2 args, init val and Array<validator>|validator
+3rd may be async validator
+On form element bind to [formGroup]="formGroupName" - don't create for me use my
+form group
+Now on inputs set formControlName="formControlName"
+ 
+To submit again listen on (ngSubmit) on the form element
+Now its not needed to get the form through local ref
 
+all config of the form goes in typescript with reactive forms so do validators
+i.e. Validators.required, or [Validators.required, Validators.email]
+
+Access a control formName.get('controlName') so to put custom styles access
+control state and discuss on it
+
+Grouping
+FormGroup is composite of it self. Use paths to access nested groups
+On containers of subgroups you bind to ⚠️formGroupName property with subgroup
+name.
+
+FormArray - can host any number of formControls - dynamically add controls
+⚠️Must cast FormArray to access its methods like push.
+bind to container element on formArrayName with the name of the array in formGroup
+<InputContainer *ngFor="let ctrl of formName.get('arrayName').controls; let i = index"
+<someInput [formControlName]="i"...
+
+Custom validators
+write a method - must take FormControl arg and return {[s: string]: boolean}
+⚠️ if valid return null! or do NOT return.
+if not valid return i.e. {"myCustomValidator": true}
+⚠️❗️ ng calls your validator and this is not the same as the class that implemented
+the code!! Must bind(this) on validators
+
+Error codes
+Every control has all validators witch did not pass in error field wich allows us
+to make customized errors messages
+
+--------------------------------------------------------------------------------
 
 AUTH    ❗️
 
