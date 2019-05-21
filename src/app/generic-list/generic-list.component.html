@@ -1,19 +1,9 @@
-<div *ngIf="draggable" cdkDropList (cdkDropListDropped)="drop($event)">
-    <app-generic-list-item cdkDrag
-    *ngFor="let element of array; let i = index;"
-    [element]="element"
-    [ngClass]="{'grid-like': gridLike, 'clickable': selectable, 'selected': isSelected(element)}"
-    (click)="onElementSelect(element)"
-    >
-    </app-generic-list-item>
-</div>
-
-<div *ngIf="!draggable">
-    <app-generic-list-item
-    *ngFor="let element of array; let i = index;"
-    [element]="element"
-    [ngClass]="{'grid-like': gridLike, 'clickable': selectable, 'selected': isSelected(element)}"
-    (click)="onElementSelect(element)"
-    >
-    </app-generic-list-item>
+<div *ngFor="let item of items"
+[ngClass]="{
+  hoverGlow: hoverGlow, selected: isSelected(item), pointer: selectable, 
+  classicItem: this.listStyle === 'classic' || !this.listStyle, 
+  gridItem: listStyle === 'grid'}"
+(click)="onSelect(item)"
+>
+  <ng-container *ngTemplateOutlet="listItem; context: {$implicit: item}"></ng-container>
 </div>

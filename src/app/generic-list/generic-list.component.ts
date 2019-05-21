@@ -1,85 +1,75 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { Component, OnInit, Input, ContentChild, TemplateRef, Output, EventEmitter } from '@angular/core';
+
+/** Determins how a list is displayed */
+type ListStyle = 'classic' | 'compact' | 'grid' | 'horizontal';
+type PaginationStyle = 'pagination' | 'infiniteScroll';
 
 @Component({
   selector: 'app-generic-list',
   templateUrl: './generic-list.component.html',
   styleUrls: ['./generic-list.component.scss']
 })
-export class GenericListComponent implements OnInit, OnChanges {
+export class GenericListComponent implements OnInit {
 
-  private selectedElements: Array<any> = [];
+  /** The items list displays */
+  @Input() items: any[];
+
+  /** Determins do list items glow when hovered */
+  @Input() hoverGlow      = false;
+  /** Determins wether list items can be selected  */
+  @Input() selectable     = false;
+  /** Determins wether multiple items can be selected */
+  @Input() multiselectable = false;
+
+  /** Determins wether sorting is present on the list */
+  @Input() sortable = false;
+  /** Determins wether filtering of list is possible */
+  @Input() filterable = false;
+
+  @Input() listStyle: ListStyle;
+
+  @Input() pagable = false;
+  @Input() pageSize = 100;
+  @Input() paginationStyle: PaginationStyle;
 
 
-  @Input() array: Array<any>;
+  @Output() select = new EventEmitter<any>();
 
-  // Events --------------------------------------------------------------------
+  selected = [];
 
-  @Output() elementSelect: EventEmitter<any> = new EventEmitter<any>();
+  @ContentChild(TemplateRef) listItem;
 
-  // ---------------------------------------------------------------------------
 
-  // Controls ------------------------------------------------------------------
-  @Input() selectable = true;
-  @Input() multiselect = true;
-
-  @Input() editable = true;
-  @Input() draggable = true;
-  @Input() delete = true;
-  @Input() deleteAll = true;
-  // ---------------------------------------------------------------------------
-
-  // Appearance ----------------------------------------------------------------
-  @Input() gridLike = false;
-  // ---------------------------------------------------------------------------
-
-  constructor() { }
 
   ngOnInit() {
   }
 
-  ngOnChanges(changes) {
-    if (this.array) {
-      this.selectedElements = this.array.filter(element => element.selected === true);
-    }
+  isClassic(): boolean {
+    return this.listStyle === 'classic' || !this.listStyle;
   }
 
-  onElementSelect(element: any): void {
 
-    if (!this.selectable) {
+  onSelect(item) {
+    if (!this.selectable) {return; }
+    if (!this.multiselectable) {
+      this.selected = [item];
+      this.select.emit(item);
       return;
     }
+    // multiselect
+    this.toggleItemSelection(item);
+    this.select.emit(this.selected);
 
-    const isSelected = this.isSelected(element);
-
-    // toggle logic
-    if (!isSelected) {
-      element.selected = true;
-      if (this.multiselect) {
-        this.selectedElements.push(element);
-      } else {
-        this.selectedElements = [element];
-      }
+  }
+  isSelected(item): boolean {
+    return this.selected.find(selectedItem => item === selectedItem);
+  }
+  toggleItemSelection(item) {
+    const isSelected = this.isSelected(item);
+    if (isSelected) {
+      this.selected = this.selected.filter(selectedItem => selectedItem !== item);
     } else {
-      element.selected = false;
-      this.selectedElements = this.selectedElements.filter(
-        selectedElement => selectedElement !== element
-      );
+      this.selected.push(item);
     }
-
-    this.elementSelect.emit(
-      this.multiselect ? this.selectedElements : this.selectedElements[0]
-    );
   }
-
-  isSelected(element: any): boolean {
-    return this.selectedElements.find(
-      selectedElement => selectedElement === element
-    ) !== undefined;
-  }
-
-  drop(event: CdkDragDrop<Array<any>>) {
-    moveItemInArray(this.array, event.previousIndex, event.currentIndex);
-  }
-
 }

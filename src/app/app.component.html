@@ -1,4 +1,6 @@
-<app-generic-tree
-[tree]="testTree"></app-generic-tree>
-
-<!-- <app-mean-course></app-mean-course> -->
+<app-generic-list [items]='[1, 2, 3, 4, 5]' [hoverGlow]="true" [selectable]="true" 
+[multiselectable]="true" listStyle="grid">
+    <ng-template let-item>
+        <div>{{item}}</div>
+    </ng-template>
+</app-generic-list>
