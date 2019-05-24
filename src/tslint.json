@@ -12,6 +12,8 @@
             "element",
             "app",
             "kebab-case"
-        ]
+        ],
+        "trailing-comma": [true, {"multiline": "always", "singleline": "never"}],
+        "indent": [true, "spaces", 2]
     }
 }

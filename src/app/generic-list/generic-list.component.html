@@ -1,9 +1,11 @@
-<div *ngFor="let item of items"
-[ngClass]="{
-  hoverGlow: hoverGlow, selected: isSelected(item), pointer: selectable, 
-  classicItem: this.listStyle === 'classic' || !this.listStyle, 
-  gridItem: listStyle === 'grid'}"
-(click)="onSelect(item)"
->
-  <ng-container *ngTemplateOutlet="listItem; context: {$implicit: item}"></ng-container>
+<div class="generic-list-container" [ngClass]="{gridContainer: listStyle === 'grid'}">
+  <div *ngFor="let item of items"
+  [ngClass]="{
+    hoverGlow: hoverGlow, selected: isSelected(item), pointer: selectable, 
+    classicItem: this.listStyle === 'classic' || !this.listStyle, 
+    gridItem: listStyle === 'grid'}"
+  (click)="onSelect(item)"
+  >
+    <ng-container *ngTemplateOutlet="listItem; context: {$implicit: item}"></ng-container>
+  </div>
 </div>

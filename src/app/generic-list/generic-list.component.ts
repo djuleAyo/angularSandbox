@@ -7,7 +7,7 @@ type PaginationStyle = 'pagination' | 'infiniteScroll';
 @Component({
   selector: 'app-generic-list',
   templateUrl: './generic-list.component.html',
-  styleUrls: ['./generic-list.component.scss']
+  styleUrls: ['./generic-list.component.scss'],
 })
 export class GenericListComponent implements OnInit {
 
@@ -38,8 +38,6 @@ export class GenericListComponent implements OnInit {
   selected = [];
 
   @ContentChild(TemplateRef) listItem;
-
-
 
   ngOnInit() {
   }
@@ -73,3 +71,17 @@ export class GenericListComponent implements OnInit {
     }
   }
 }
+
+/**
+ * List styling - place anywhere. style host. horizontal list
+ * Controls positioning
+ * sort, sort conf
+ * filter, filter conf
+ * partition, partition conf
+ * custom styles for items
+ * icons
+ * items layouts
+ * polish - animations
+ * infinite scroll
+ * aliases - shorthand components
+ */
